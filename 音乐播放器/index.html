@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			div{
+				width:300px;
+				height:500px;
+				border:2px solid blue;
+			}
+			footer{
+				position:absolute;
+				top:450px;
+			}
+			input{
+				position:absolute;
+				left:240px;
+			}
+			#right1{
+				position: absolute;
+				left: 220px;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<div>
+		<h3><span>在线音乐</span><span id="right1">本地音乐</span></h3>
+		爱-屈楚萧
+		<input type="button" id="play" onclick="play()" value="播放"/>
+		<br/>
+		<footer>
+			<audio src="爱.mp3" controls="controls" id="audios"></audio>
+		</footer>
+		</div>
+	</body>
+</html>
+<script>
+	function play(){   
+		var audio = document.getElementById('audios');
+		if(audio.paused){                 
+         audio.play();
+         document.getElementById('play').value="暂停";
+    	}
+     	else{
+        audio.pause();
+        document.getElementById('play').value="播放";
+     	} 
+  }
+</script>
