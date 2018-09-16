@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	</head>
+	<style>
+		legend{
+			color:red;
+		}
+		datalist{
+			display:none;
+		}
+		div{
+			width:600px;
+			height:800px;
+		}
+	</style>
+	<script>
+		window.onload = function() {
+			var txt = document.getElementById("email1");
+
+			txt.onkeyup = function(e) { 
+				//如果有@了，怎么处理
+				console.log(txt.value);
+				var regExp = /@\.?/gi;
+				if(regExp.test(txt.value) == false) {
+					var myNode = document.getElementById("emails").children;
+					var myhide = ["@qq.com", "@163.com", "@126.com", "@gmail.com", "@yahoo.com.cn"];
+					for(var i = 0; i < (myNode.length); i++) {
+						var tmp = txt.value;
+						var tmp2 = myhide[i];
+						tmp2 = tmp + tmp2;
+						myNode[i].value = tmp2;
+					}
+				} else {
+					var txtnew;
+					txtnew = txt.value.substring(0, txt.value.indexOf("@"));
+					var myNode = document.getElementById("emails").children;
+					var myhide = ["@qq.com", "@163.com", "@126.com", "@gmail.com", "@yahoo.com.cn"];
+					for(var i = 0; i < (myNode.length); i++) {
+						var tmp = divnew;
+						var tmp2 = myhide[i];
+						tmp2 = tmp + tmp2;
+						myNode[i].value = tmp2;
+					}
+				}
+			}
+		}
+
+		
+	</script>
+	<body>
+		<div>
+		<h1>填写个人信息</h1>
+		<fieldset>
+			<legend>基本信息</legend>
+			姓名<input type="text" name="name1" placeholder="请输入姓名" required="required" /><br />
+			年龄<input type="number" name="age" min="0" />
+		</fieldset><br />
+		
+		<fieldset>
+			<legend>你想在哪里收到邮件？</legend>
+			邮箱<input type="email" id="email1" placeholder="请输入邮箱" required="required" autocomplete="on" list="emails" results />
+			<datalist id="emails">
+				<option values="@qq.com"></option>
+				<option values="@163.com"></option>
+				<option values="@gmail.com"></option>
+				<option values="@yahoo.com.cn"></option>
+				<option values="@126.com"></option>
+			</datalist>
+		</fieldset><br />
+		
+		<fieldset>
+			<legend>收入情况</legend>
+			月收入<select>
+				<option>20k+</option>
+				<option>30k+</option>
+				<option>40k+</option>
+				<option>50k+</option>
+			</select>
+			银行卡<input type="number" name="card" min="0" />
+			有效期<input type="date" name="date1" />
+		</fieldset><br />
+		
+		<fieldset>
+			<legend>选择提交文件</legend>
+			文件<input type="file" name="file1">
+		</fieldset><br />
+		
+		<input type="submit" value="提交">
+		</div>
+	</body>
+</html>
